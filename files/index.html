@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Камень - ножницы - бумага</title>
+	<link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+	<div class="_container opacity">
+		<header>
+			<p class="name enemy-name">Противник</p>
+			<p class="score">
+				<span class="score__enemy">0</span>
+				Счёт
+				<span class="score__your">0</span>
+			</p>
+			<p class="name your-name"></p>
+			<span class="restart" onclick="refresh()">&#8635;</span>
+		</header>
+		<div class="sides">
+			<div class="enemy-side side">
+				<div class="enemy-side__body">
+					<div class="enemy-side__selected-sign selected-sign opacity">
+						<img src="" alt="">
+					</div>
+				</div>
+			</div>
+			<div class="your-side side">
+				<div class="your-side__body">
+					<div class="your-side__img">
+
+					</div>
+					<div class="your-side__selected-sign selected-sign opacity">
+						<img src="" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="wrapp-modes active">
+		<p class="modes__title">Выберите режим</p>
+		<div class="modes">
+			<div class="mode" mode="classic">
+				<p class="mode__title">Классический</p>
+				<p>Камень - ножницы - бумага</p>
+			</div>
+			<div class="mode" mode="spok">
+				<p class="mode__title">Расширенный</p>
+				<p>Камень - ножницы - бумага - ящерица - спок</p>
+			</div>
+			<div class="mode" mode="creativ">
+				<p class="mode__title">Креатив</p>
+				<p>Создай свои предметы и правила</p>
+			</div>
+		</div>
+	</div>
+	<div class="games opacity">
+		<p class="games__title">Выберите игру</p>
+		<div class="games__body">
+			<div class="game" id="game-create">
+				<p class="game__title">Создать</p>
+				<p class="game__subtitle">Создай уникальные предметы и комбинации</p>
+			</div>
+		</div>
+	</div>
+	<div class="create-game opacity">
+		<p class="create-game__title">Создать игру</p>
+		<div class="create-game__body">
+			<span class="create-game__regulations">Правила создания игры:</span> <span class="arrow-down">▼</span>
+			<ol class="create-game__info">
+				<li>Должно быть нечётное количество предметов</li>
+				<li>Предмет не может сыграть в ничью с другим предметом</li>
+				<li>Каждый предмет должен быть "(всё количество предметов - 1) / 2" предметов</li>
+			</ol>
+
+			<div class="create-game__subjects-wrapp">
+				<p class="create-game__subjects-title">Введите все предметы для игры</p>
+				<div class="create-game__subjects">
+					<div class="create-game__subjects-body">
+						<p><input type="text"> <span class="create-game__subjects-remove">&#10006;</span></p>
+						<p><input type="text"> <span class="create-game__subjects-remove">&#10006;</span></p>
+						<p><input type="text"> <span class="create-game__subjects-remove">&#10006;</span></p>
+					</div>
+					<button class="create-game__subjects-add">+</button>
+				</div>
+				<p class="error create-game__subjects-error">Количество элементов не должно быть чётным числом</p>
+				<p class="error create-game__subjects-warning"><b>Внимание:</b> Заполнены не все поля</p>
+				<p class="error create-game__subjects-warning2"><b>Внимание:</b> Названия предметов не должны повторяться</p>
+				<p class="create-game__comb-title">Заполните комбинации для игры</p>
+				<table class="create-game__comb">
+					<thead>
+						<tr>
+							<th class="t-head t-subject">Предмет</th>
+							<th class="t-head t-comb">Кого бъёт</th>
+							<th class="t-head t-img">Ссылка на фото</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="t-body t-subject"></td>
+							<td class="t-body t-comb">
+								<div class="t-comb-select">
+									<select>
+										<option value="" disabled class="option-disabled-start"></option>
+										<option value=""></option>
+										<option value=""></option>
+									</select>
+								</div>
+								<p class="comb-warning"><b>Внимание:</b> выбранные предметы не могут совпадать</p>
+							</td>
+							<td class="t-body t-img"><input type="text" placeholder="Ссылка"></td>
+						</tr>
+						<tr>
+							<td class="t-body t-subject"></td>
+							<td class="t-body t-comb">
+								<div class="t-comb-select">
+									<select>
+										<option value=""></option>
+										<option value="" disabled class="option-disabled-start"></option>
+										<option value=""></option>
+									</select>
+								</div>
+								<p class="comb-warning"><b>Внимание:</b> выбранные предметы не могут совпадать</p>
+							</td>
+							<td class="t-body t-img"><input type="text" placeholder="Ссылка"></td>
+						</tr>
+						<tr>
+							<td class="t-body t-subject"></td>
+							<td class="t-body t-comb">
+								<div class="t-comb-select">
+									<select>
+										<option value=""></option>
+										<option value=""></option>
+										<option value="" disabled class="option-disabled-start"></option>
+									</select>
+								</div>
+								<p class="comb-warning"><b>Внимание:</b> выбранные предметы не могут совпадать</p>
+							</td>
+							<td class="t-body t-img"><input type="text" placeholder="Ссылка"></td>
+						</tr>
+					</tbody>
+				</table>
+				<button class="submit">Начать</button>
+			</div>
+		</div>
+	</div>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="jquery.cookie.js"></script>
+	<script src="script.js"></script>
+</body>
+
+</html>

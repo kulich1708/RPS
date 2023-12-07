@@ -1,0 +1,685 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Камень - ножницы - бумага</title>
+</head>
+
+<body>
+	<div class="_container opacity">
+		<header>
+			<p class="name enemy-name">Противник</p>
+			<p class="score">
+				<span class="score__enemy">0</span>
+				Счёт
+				<span class="score__your">0</span>
+			</p>
+			<p class="name your-name"></p>
+			<span class="restart" onclick="refresh()">&#8635;</span>
+		</header>
+		<div class="sides">
+			<div class="enemy-side side">
+				<div class="enemy-side__body">
+					<div class="enemy-side__selected-sign selected-sign opacity">
+						<img src="" alt="">
+					</div>
+				</div>
+			</div>
+			<div class="your-side side">
+				<div class="your-side__body">
+					<div class="your-side__img">
+
+					</div>
+					<div class="your-side__selected-sign selected-sign opacity">
+						<img src="" alt="">
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="wrapp-modes active">
+		<p class="modes__title">Выберите режим</p>
+		<div class="modes">
+			<div class="mode" mode="classic">
+				<p class="mode__title">Классический</p>
+				<p>Камень - ножницы - бумага</p>
+			</div>
+			<div class="mode" mode="spok">
+				<p class="mode__title">Расширенный</p>
+				<p>Камень - ножницы - бумага - ящерица - спок</p>
+			</div>
+			<div class="mode" mode="creativ">
+				<p class="mode__title">Креатив</p>
+				<p>Создай свои предметы и правила</p>
+			</div>
+		</div>
+	</div>
+	<div class="games opacity">
+		<p class="games__title">Выберите игру</p>
+		<div class="games__body">
+			<div class="game" id="game-create">
+				<p class="game__title">Создать</p>
+				<p class="game__subtitle">Создай уникальные предметы и комбинации</p>
+			</div>
+		</div>
+	</div>
+	<div class="create-game opacity">
+		<p class="create-game__title">Создать игру</p>
+		<div class="create-game__body">
+			<span class="create-game__regulations">Правила создания игры:</span> <span class="arrow-down">▼</span>
+			<ol class="create-game__info">
+				<li>Должно быть нечётное количество предметов</li>
+				<li>Предмет не может сыграть в ничью с другим предметом</li>
+				<li>Каждый предмет должен быть "(всё количество предметов - 1) / 2" предметов</li>
+			</ol>
+
+			<div class="create-game__subjects-wrapp">
+				<p class="create-game__subjects-title">Введите все предметы для игры</p>
+				<div class="create-game__subjects">
+					<div class="create-game__subjects-body">
+						<p><input type="text"> <span class="create-game__subjects-remove">&#10006;</span></p>
+						<p><input type="text"> <span class="create-game__subjects-remove">&#10006;</span></p>
+						<p><input type="text"> <span class="create-game__subjects-remove">&#10006;</span></p>
+					</div>
+					<button class="create-game__subjects-add">+</button>
+				</div>
+				<p class="error create-game__subjects-error">Количество элементов не должно быть чётным числом</p>
+				<p class="error create-game__subjects-warning"><b>Внимание:</b> Заполнены не все поля</p>
+				<p class="error create-game__subjects-warning2"><b>Внимание:</b> Названия предметов не должны повторяться</p>
+				<p class="create-game__comb-title">Заполните комбинации для игры</p>
+				<table class="create-game__comb">
+					<thead>
+						<tr>
+							<th class="t-head t-subject">Предмет</th>
+							<th class="t-head t-comb">Кого бъёт</th>
+							<th class="t-head t-img">Ссылка на фото</th>
+						</tr>
+					</thead>
+					<tbody>
+						<tr>
+							<td class="t-body t-subject"></td>
+							<td class="t-body t-comb">
+								<div class="t-comb-select">
+									<select>
+										<option value="" disabled class="option-disabled-start"></option>
+										<option value=""></option>
+										<option value=""></option>
+									</select>
+								</div>
+								<p class="comb-warning"><b>Внимание:</b> выбранные предметы не могут совпадать</p>
+							</td>
+							<td class="t-body t-img"><input type="text" placeholder="Ссылка"></td>
+						</tr>
+						<tr>
+							<td class="t-body t-subject"></td>
+							<td class="t-body t-comb">
+								<div class="t-comb-select">
+									<select>
+										<option value=""></option>
+										<option value="" disabled class="option-disabled-start"></option>
+										<option value=""></option>
+									</select>
+								</div>
+								<p class="comb-warning"><b>Внимание:</b> выбранные предметы не могут совпадать</p>
+							</td>
+							<td class="t-body t-img"><input type="text" placeholder="Ссылка"></td>
+						</tr>
+						<tr>
+							<td class="t-body t-subject"></td>
+							<td class="t-body t-comb">
+								<div class="t-comb-select">
+									<select>
+										<option value=""></option>
+										<option value=""></option>
+										<option value="" disabled class="option-disabled-start"></option>
+									</select>
+								</div>
+								<p class="comb-warning"><b>Внимание:</b> выбранные предметы не могут совпадать</p>
+							</td>
+							<td class="t-body t-img"><input type="text" placeholder="Ссылка"></td>
+						</tr>
+					</tbody>
+				</table>
+				<button class="submit">Начать</button>
+			</div>
+		</div>
+	</div>
+	<style>
+		::-webkit-scrollbar{width:0}.modes{width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.wrapp-modes{top:5%;left:1%;position:absolute;width:98%;height:100%;display:none;-webkit-transition:.5s;transition:.5s;opacity:0;z-index:10}.wrapp-modes.active{display:block;opacity:1}.mode{cursor:pointer;padding:20px;-webkit-box-flex:0;-ms-flex:0 1 28%;flex:0 1 28%;border:1px solid black;font-size:20px;height:200px;min-width:220px;border-radius:20px}@media screen and (max-width:800px){.modes{-ms-flex-wrap:wrap;flex-wrap:wrap}.mode{-webkit-box-flex:0;-ms-flex:0 1 100%;flex:0 1 100%}}.mode p{text-align:center}.mode:nth-child(1){background-color:#ffce8e}.mode:nth-child(2){background-color:#928aff}.mode:nth-child(3){background-color:#6dffaf}.mode:nth-child(1).select-mode{-webkit-animation:select-mode-1 3s ease-in-out forwards;animation:select-mode-1 3s ease-in-out forwards}.mode:nth-child(2).select-mode{-webkit-animation:select-mode-2 3s ease-in-out forwards;animation:select-mode-2 3s ease-in-out forwards}.mode:nth-child(3).select-mode{-webkit-animation:select-mode-3 3s ease-in-out forwards;animation:select-mode-3 3s ease-in-out forwards}.mode:hover{-webkit-box-shadow:0 0 40px #929292;box-shadow:0 0 40px #929292;-webkit-transition:.3s;transition:.3s}.mode:not(:hover){-webkit-transition:.3s;transition:.3s}.mode__title{font-size:35px}.restart{position:absolute;top:10px;right:10px;cursor:pointer}html,body{height:100%;background:#c2c2c2;padding:0;margin:0;-webkit-transition:.4s;transition:.4s}._container{height:100%;-webkit-transition:.5s;transition:.5s}header{position:relative;width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-orient:horizontal;-webkit-box-direction:normal;-ms-flex-direction:row;flex-direction:row}@media screen and (max-width:600px){.name,.score,.restart{font-size:16px}.restart{font-size:25px}}.restart{font-size:35px;color:#fff}.sides{padding:0;margin:0;max-width:100%;display:-webkit-box;display:-ms-flexbox;display:flex;margin:0 auto;position:relative;height:calc(100% - 80px)}.side{-webkit-box-flex:0;-ms-flex:0 1 50%;flex:0 1 50%;min-height:100%}.your-side{background:#5cf15c}.enemy-side{background:#ff7d7d}header p{width:33%;display:inline-block;text-align:center;font-size:25px;background:#646464;color:#fff;margin-top:0;margin-bottom:0;padding:30px 20px}.your-side__body,.enemy-side__body{margin:0;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-orient:horizontal;-webkit-box-direction:reverse;-ms-flex-direction:row-reverse;flex-direction:row-reverse;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;min-height:calc(100% - 70px);-webkit-box-align:center;-ms-flex-align:center;align-items:center}.your-side__img{-webkit-box-flex:0;-ms-flex:0 1 25%;flex:0 1 25%;margin-right:20px;overflow-y:auto;overflow-x:hidden;-webkit-transition:.5s;transition:.5s}.your-side__img img{min-width:100%;width:100%;margin-bottom:10px;opacity:.8;-webkit-transform:scale(0.8);transform:scale(0.8);cursor:pointer;font-size:30px;text-align:center}@media screen and (max-width:1200px){.your-side__img{-webkit-box-flex:0;-ms-flex:0 1 50%;flex:0 1 50%}}@media screen and (max-width:550px){.your-side__img{-webkit-box-flex:0;-ms-flex:0 1 75%;flex:0 1 75%}}.your-side__img img:hover{-webkit-transition:.3s;transition:.3s;opacity:1;-webkit-transform:scale(1.1);transform:scale(1.1)}.your-side__img img:not(:hover){-webkit-transition:.3s;transition:.3s}.selected-sign{-webkit-box-flex:0;-ms-flex:0 1 50%;flex:0 1 50%;-webkit-transition:.5s;transition:.5s;display:none;max-height:100%}@media screen and (max-width:550px){.selected-sign{-webkit-box-flex:0;-ms-flex:0 1 100%;flex:0 1 100%}}.selected-sign img{width:100%}.score{white-space:nowrap}.modes__title{font-size:40px;text-align:center}.games{position:absolute;left:1%;width:98%;top:0;-webkit-transition:.5s;transition:.5s;opacity:1;z-index:1}.games__body{display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between}.games__title{font-size:30px;color:#000;text-align:center}.game{color:#fff;padding:20px;-webkit-box-flex:0;-ms-flex:0 1 28%;flex:0 1 28%;background-color:#1998ca;border-radius:20px;cursor:pointer}.game:hover{-webkit-box-shadow:0 0 40px #929292;box-shadow:0 0 40px #929292;-webkit-transition:.4s;transition:.4s}.game:not(:hover){-webkit-transition:.4s;transition:.4s}.game__title{font-size:40px;color:#8f0}.game p{margin:20px;text-align:center;text-shadow:0 0 4px #000}.game__subtitle{font-size:20px}.create-game{position:absolute;top:0;width:calc(100% - 60px);background-color:#fff;padding:30px;min-height:100%}.create-game__title{font-size:40px;text-align:center}.create-game__regulations{font-size:30px;cursor:pointer}.create-game__info{display:none;font-size:20px;line-height:150%}.create-game__body{width:100%}.create-game__subjects-wrapp{margin-top:30px}.create-game__subjects{display:-webkit-box;display:-ms-flexbox;display:flex;width:calc(100%);border:1px solid #919191;border-radius:10px;-webkit-box-pack:justify;-ms-flex-pack:justify;justify-content:space-between;-webkit-box-align:center;-ms-flex-align:center;align-items:center;padding:0 10px 0 10px}.create-game__comb{-webkit-transition:.5s;transition:.5s;width:100%;-webkit-box-align:center;-ms-flex-align:center;align-items:center;font-size:20px;border-collapse:collapse}.create-game__comb td,.create-game__comb th{border:1px solid black;padding:5px 20px;height:30px}.create-game__comb thead{width:100%}.create-game__comb th{text-align:center}.create-game__comb td{height:50px}.create-game__comb .t-subject{width:25%}.create-game__comb .t-img{width:25%}.create-game__comb .t-img input{display:block;outline:0;width:100%;height:100%;border:0}.create-game__comb .t-comb{width:50%;vertical-align:top}.create-game__comb .t-comb select{outline:0;border-radius:5px;padding:2px;margin-right:10px}.create-game__comb tr:nth-child(-n+3) .t-body select:nth-child(1){margin-right:5px}.create-game__comb .t-comb-select{width:100%;height:calc(100% - 20px)}.create-game__comb .comb-warning{width:100%;text-align:center;font-size:18px;color:red;opacity:0;-webkit-transition:.5s;transition:.5s;padding:0;margin:0;cursor:default}.create-game__comb .comb-warning.active{opacity:1;-webkit-transition:.5s;transition:.5s}.create-game__comb .select-warning{border-color:red;-webkit-transition:.4s;transition:.4s}.create-game__subjects-title,.create-game__comb-title{font-size:40px;text-align:center}.create-game__subjects-body{width:calc(100% - 50px)}.create-game__subjects-body input{height:40px;border:1px solid #6e6e6e;padding:0 10px 0 10px;border-radius:5px}.create-game__subjects-body p:nth-child(-n+3){margin-right:0}.create-game__subjects-body p{display:inline-block;position:relative;margin:4px}.create-game__subjects-body p span{font-size:20px;margin-left:-30px;position:absolute;left:100%;top:50%;-webkit-transform:translateY(-50%);transform:translateY(-50%);line-height:0;cursor:pointer;color:red;text-shadow:0 0 1px #000}.create-game__subjects-body p span:hover{color:#ff5353;text-shadow:0 0 2px #000;-webkit-transition:.3s;transition:.3s}.create-game__subjects-body p span:not(:hover){-webkit-transition:.3s;transition:.3s}.create-game__subjects-error{color:red;font-size:20px;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-transition:.5s;transition:.5s;opacity:0}.create-game__subjects-warning,.create-game__subjects-warning2{color:#ffb91d;font-size:20px;-webkit-box-align:center;-ms-flex-align:center;align-items:center;-webkit-transition:.5s;transition:.5s;opacity:0}.create-game__subjects-error.active,.create-game__subjects-warning.active,.create-game__subjects-warning2.active{opacity:1;-webkit-transition:.5s;transition:.5s}.create-game__subjects-add{background:lime;border-radius:20px;width:50px;height:50px;font-size:30px;display:-webkit-box;display:-ms-flexbox;display:flex;-webkit-box-pack:center;-ms-flex-pack:center;justify-content:center;-webkit-box-align:center;-ms-flex-align:center;align-items:center;cursor:pointer}.arrow-down{-webkit-transition:.3s;transition:.3s;display:inline-block;font-size:20px;cursor:pointer}.arrow-up{-webkit-transition:.3s;transition:.3s;-webkit-transform:rotate(180deg);transform:rotate(180deg);display:inline-block}.submit{background-color:#43a800;color:#fff;cursor:pointer;float:right;font-size:20px;margin-top:40px;border-radius:10px;padding:10px}.opacity{opacity:0;-webkit-transition:.5s;transition:.5s}
+	</style>
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+	<script src="jquery.cookie.js"></script>
+	<script>
+		// функция начала новой игры
+function refresh() {
+	let reset = confirm("Вы уверены что хотите начать игру заново?");
+	if (reset) {
+		window.location.href = window.location.href
+	}
+}
+// получение ширины окна браузера
+function checkWidth() {
+	let windowWidth = $(window).width();
+	return windowWidth;
+}
+// получение высоты окна браузера
+function checkHeight() {
+	let windowHeight = $(window).height();
+	$('.your-side__img').css('height', windowHeight - 100)
+	return windowHeight;
+}
+checkWidth();
+checkHeight()
+$(window).resize(function () {
+	checkWidth()
+	checkHeight()
+});
+// создание никнейма
+
+let yourName = prompt('Введи свой никнейм');
+if (+yourName == 0) {
+	yourName = 'user-' + Math.round(-0.5 + Math.random() * 1000);
+	$('body').removeClass('blur')
+}
+yourName = yourName.length > 20 ? yourName = yourName.substr(0, 20) + '...' : yourName
+document.querySelector('.your-name').innerHTML = yourName
+
+// if ($.cookie('name')) {
+// } else {
+// 	var myAry = Math.random();
+// 	$.cookie('name', JSON.stringify(myAry));
+// 	var storedAry = JSON.parse($.cookie('name'));
+// }
+// выбор режима игры
+$('.mode').click(function () {
+	$('.modes').css('pointer-events', 'none')
+	//$('.modes').css('overflow-y', 'hidden')
+	$('body').css('overflow-y', 'hidden')
+	// определение направления смещения выбранного режима
+	let distLeft = this.offsetLeft
+	let distWidth = document.querySelector('.modes').offsetWidth
+	let distWidthMode = this.offsetWidth
+	let distRigth = distWidth - distLeft - distWidthMode
+	let znack = 0
+	if (Math.round(distLeft / 10) * 10 == Math.round(distRigth / 10) * 10) {
+		znack = 0
+	} else if (Math.round(distLeft / 10) * 10 < Math.round(distRigth / 10) * 10) {
+		znack = 1
+	} else if (Math.round(distLeft / 10) * 10 > Math.round(distRigth / 10) * 10) {
+		znack = -1
+	}
+	// анимация для невыбранных режимов
+	$(this).addClass('selected-mode')
+	let thisClick = this
+	for (let i = 0; i < $('.mode').length; i++) {
+		if (document.querySelector('.modes').children[i].className.split(' ').includes('selected-mode') == false) {
+			document.querySelector('.modes').children[i].classList.add('not-mode')
+			let elem = document.querySelector('.modes').children[i]
+			$(elem).css('transform', `translateY(${-(elem.getBoundingClientRect().top + elem.clientHeight + 100)}px)`)
+			$(elem).css('transition', '.5s ease-in')
+			$(elem).css('opacity', '0')
+		}
+	}
+	$(window).resize(function () {
+		modeAnimFunc()
+	});
+	// анимация выбранного режима
+	modeAnimFunc()
+	function modeAnimFunc() {
+		setTimeout(function () {
+			let selectPos = (checkHeight() - thisClick.offsetHeight - thisClick.getBoundingClientRect().top * 2) / 2
+			let selectModeWidth = thisClick.offsetWidth
+			$('.modes__title').addClass('opacity')
+			// проверка размера выбранного элемента 
+			// если 100%
+			if (Math.round(document.querySelector('.mode').offsetWidth / 10) * 10 != Math.round(document.querySelector('.modes').offsetWidth / 10) * 10) {
+				$(thisClick).css('transform', `translate(${(checkWidth() - selectModeWidth) / 2 * znack}px, ${selectPos}px) scale(1.7)`)
+				$(thisClick).css('transition', '0.4s ease-in')
+				setTimeout(function () {
+					$(thisClick).css('transform', `translate(${(checkWidth() - selectModeWidth) / 2 * znack}px, ${selectPos}px) scale(1.5)`)
+					$(thisClick).css('transition', '0.5s ease')
+					setTimeout(function () {
+						$(thisClick).css('opacity', 0)
+						$(thisClick).css('transition', '1s')
+					}, 1000)
+				}, 400)
+			}
+			// если не 100%
+			else {
+				$(thisClick).css('z-index', '99')
+				$(thisClick).css('transform', `translateY(${-thisClick.getBoundingClientRect().top + 22}px)`)
+				setTimeout(function () {
+					$(thisClick).css('opacity', 0)
+					$(thisClick).css('transition', '1s')
+				}, 1900)
+			}
+		})
+	}
+	// функция старта выбранного режима
+	function showGame() {
+		setTimeout(function () {
+			$('._container').removeClass('opacity')
+			$('.sides').css('z-index', 99)
+			setTimeout(function () {
+				$('.wrapp-modes').removeClass('active')
+			}, 500)
+			setTimeout(function () {
+				$('.games').addClass('opacity')
+			}, 500)
+		}, 1900)
+	}
+	// оперделение выбранного режима
+	let modeGame = this.getAttribute("mode")
+	if (modeGame == 'classic') {
+		createGame(gameClassic)
+		showGame()
+	} else if (modeGame == 'spok') {
+		createGame(gameSpok)
+		showGame()
+	} else if (modeGame == 'creativ') {
+		setTimeout(function () {
+			$('.games').removeClass('opacity')
+			setTimeout(function () {
+				$('.wrapp-modes').removeClass('active')
+			}, 500)
+		}, 1900)
+		$('.game').click(function () {
+			if (this.id == 'game-create') {
+				let submitError = 0
+				let submitErrorSelect = 0
+				let submitErrorSubject = 0
+				setTimeout(function () {
+					$('.games').addClass('opacity')
+					setTimeout(function () {
+						$('.create-game').removeClass('opacity')
+						$('.create-game').css('z-index', 20)
+						$('body').css('overflow', 'auto')
+					}, 500)
+				}, 100)
+
+				$('.create-game__regulations').click(function () {
+					$('.create-game__info').slideToggle()
+					$('.arrow-down').toggleClass('arrow-up')
+				})
+				$('.create-game__subjects-add').click(function () {
+					function createCombTr() {
+						// формирование новой строки без select
+						combTr = document.createElement('tr')
+						let tImg = document.createElement('td')
+						tImg.classList.add('t-body', 't-img')
+						tImg.appendChild(document.createElement('input')).placeholder = 'Ссылка'
+						let tComb = document.createElement('td')
+						tComb.classList.add('t-body', 't-comb')
+						tComb.appendChild(document.createElement('div')).classList.add('t-comb-select')
+						let tWarning = document.createElement('p')
+						tWarning.classList.add('comb-warning')
+						tWarning.innerHTML = '<b>Внимание:</b> выбранные предметы не могут совпадать'
+						tComb.appendChild(tWarning)
+						combTr.appendChild(document.createElement('td')).classList.add('t-body', 't-subject')
+						combTr.appendChild(tComb)
+						combTr.appendChild(tImg)
+						document.querySelector('.create-game__comb tbody').append(combTr);
+						// добавление необходимых select для всех строк
+						for (let i = 0; i < $('.create-game__comb tbody tr').length; i++) {
+							// добавление option в пустые select
+							for (let a = $('.create-game__comb tbody tr').eq(i).find('select').length; a < ($('.create-game__subjects-body p').length - 1) / 2; a = $('.create-game__comb tbody tr').eq(i).find('select').length) {
+								let tSelect = document.createElement('select')
+								for (let b = 0; b < $('.create-game__subjects-body p').length; b++) {
+									let tOption = document.createElement('option')
+									tOption.value = $('.create-game__subjects-body p').eq(b).children('input')[0].value;
+									tOption.text = $('.create-game__subjects-body p').eq(b).children('input')[0].value
+									if (b == $('.create-game__comb tbody tr').eq(i).index()) {
+										tOption.disabled = true
+										tOption.classList.add('option-disabled-start')
+									}
+									tSelect.appendChild(tOption)
+								}
+								$('.create-game__comb tbody tr .t-comb').eq(i).children('.t-comb-select').append(tSelect)
+							}
+							// добавление option в ранее существовавшие select
+							for (let a = 0; a < $('.create-game__comb tbody tr').eq(i).find('select').length; a++) {
+								for (let b = $('.create-game__comb tbody tr').eq(i).find('select').eq(a).children('option').length; b < $('.create-game__subjects-body p').length; b = $('.create-game__comb tbody tr').eq(i).find('select').eq(a).children('option').length) {
+									let tOption = document.createElement('option');
+									if (b == $('.create-game__comb tbody tr').eq(i).index()) {
+										tOption.disabled = true
+										tOption.classList.add('option-disabled-start')
+									}
+									$('.create-game__comb tbody tr').eq(i).find('select').eq(a).append(tOption)
+								}
+							}
+						}
+					}
+					function createSubjectInput() {
+						let createInput = document.createElement('p')
+						createInput.appendChild(document.createElement('input'));
+						let createSpan = document.createElement('span')
+						createSpan.className = 'create-game__subjects-remove'
+						createSpan.innerHTML = '&#10006;';
+						createInput.appendChild(createSpan)
+						document.querySelector('.create-game__subjects-body').append(createInput);
+					}
+					// проверка на чётность предметов и добавление одного или двух элементов
+					if ($('.create-game__subjects-body p').length % 2 == 0) {
+						// создание предмета
+						createSubjectInput()
+						// создание строки
+						createCombTr()
+					} else {
+						// создание двух предметов
+						createSubjectInput()
+						createSubjectInput()
+
+						// создание двух строк комбинаций
+						createCombTr()
+						createCombTr()
+					}
+					// проверка на количество предметов
+					if ($('.create-game__subjects-body p').length % 2 == 0) {
+						$('.create-game__subjects-error').addClass('active')
+					} else {
+						$('.create-game__subjects-error').removeClass('active')
+					}
+
+					checkFullness()
+				})
+				$("body").on("click", ".create-game__subjects-remove", function () {
+					let thisClick = this
+					$(this).closest('p').addClass('opacity')
+					setTimeout(function () {
+						for (let i = 0; i < $('.create-game__comb tbody tr').length; i++) {
+							if ($('.create-game__comb tbody tr').eq(i).find('select').length > ($('.create-game__subjects-body p').length - 1) / 2) {
+								$('.create-game__comb tbody tr').eq(i).find('select').eq($('.create-game__comb tbody tr').eq(i).find('select').length - 1).remove()
+							}
+							for (let b = 0; b < $('.create-game__comb tbody tr').eq(i).find('select').length; b++) {
+								$('.create-game__comb tbody tr').eq(i).find('select').eq(b).children('option').eq($(thisClick).parent().index()).remove()
+							}
+						}
+						$('.create-game__comb tbody tr').eq($(thisClick).parent().index()).remove()
+						$(thisClick).closest('p').remove()
+						checkSelected(0)
+						if ($('.create-game__subjects-body p').length % 2 == 0) {
+							$('.create-game__subjects-error').addClass('active')
+						} else {
+							$('.create-game__subjects-error').removeClass('active')
+						}
+						checkFullness()
+					}, 500)
+				})
+				checkFullness()
+				$(function () {
+					$(document).on("change keyup input click", ".create-game__subjects-body p input", function () {
+						let thisValue = $(this).val()
+						let thisClick = this
+						$('.create-game__comb tbody tr').eq($(this).parent().index()).children('td')[0].innerHTML = this.value
+						// редактирование текста и значений option
+						for (let i = 0; i < $('.create-game__comb tbody tr').length; i++) {
+							for (let b = 0; b < $('.create-game__comb tbody tr').eq(i).find('select').length; b++) {
+								$('.create-game__comb tbody tr').eq(i).find('select').eq(b).children('option').eq($(thisClick).parent().index())[0].value = thisValue
+								$('.create-game__comb tbody tr').eq(i).find('select').eq(b).children('option').eq($(thisClick).parent().index())[0].text = thisValue
+								checkSelected($('.create-game__comb tbody tr').eq(i).find('select').eq(b))
+							}
+						}
+						checkFullness()
+					})
+				});
+				// функция поиска одинаковых выбранных значений в разных select
+				function checkSelected2(perem, error) {
+					for (let i = 0; i < $('.create-game__comb tbody tr').eq(perem).find('select').length; i++) {
+						let optionSelected = $('.create-game__comb tbody tr').eq(perem).find('select').eq(i).children("option:selected").text()
+						// перебор проверочных select
+						for (let b = 0; b < $('.create-game__comb tbody tr').eq(perem).find('select').length; b++) {
+							// поиск выбранных одинаковых значений
+							if ($('.create-game__comb tbody tr').eq(perem).find('select').children(`option:selected[value='${optionSelected}']`).length > 1) {
+								$('.create-game__comb tbody tr').eq(perem).find('select').children(`option:selected[value='${optionSelected}']`).parent().addClass('select-warning')
+								$('.create-game__comb tbody tr').eq(perem).find('.comb-warning').addClass('active')
+								submitErrorSelect += 1
+								error += 1
+							} else {
+								$('.create-game__comb tbody tr').eq(perem).find('select').children(`option:selected[value='${optionSelected}']`).parent().removeClass('select-warning')
+							}
+						}
+					}
+					checkSubmitError()
+					return error
+				}
+				function checkSelected(elem) {
+					let error = 0
+					let trIndex = 0;
+					if (elem) {
+						trIndex = $(elem).parents('tr').index()
+						checkSelected2(trIndex, 0)
+						// если select с ошибками нет, убираем сообщение об ошибке
+						if ($('.create-game__comb tbody tr').eq(trIndex).find('select.select-warning').length == 0) {
+							$('.create-game__comb tbody tr').eq(trIndex).find('.comb-warning').removeClass('active')
+						}
+					} else {
+						for (let a = 0; a < $('.create-game__comb tbody tr').length; a++) {
+							trIndex = a
+							error = checkSelected2(trIndex, error)
+							// если select с ошибками нет, убираем сообщение об ошибке
+							if ($('.create-game__comb tbody tr').eq(trIndex).find('select.select-warning').length == 0) {
+								$('.create-game__comb tbody tr').eq(trIndex).find('.comb-warning').removeClass('active')
+							}
+						}
+					}
+					let selectWarning = 0
+					for (let a = 0; a < $('.create-game__comb tbody tr').length; a++) {
+						// если select с ошибками нет, убираем сообщение об ошибке
+						if ($('.create-game__comb tbody tr').eq(a).find('select.select-warning').length != 0) {
+							selectWarning += 1
+						}
+					}
+					if (selectWarning == 0) {
+						submitErrorSelect = 0
+					}
+					checkSubmitError()
+					return error
+				}
+				$(function () {
+					$(document).on('change', '.t-comb select', function () {
+						checkSelected(this)
+					})
+				})
+				function checkFullness() {
+					let error = 0;
+					let value = 0;
+					let arr = [];
+					// проверка на заполненность полей и их количество
+					for (let i = 0; i < $('.create-game__subjects-body p').length; i++) {
+						arr.push($('.create-game__subjects-body p').eq(i).children('input')[0].value)
+						if (+$('.create-game__subjects-body p').eq(i).children('input')[0].value == 0) {
+							$('.create-game__subjects-warning').addClass('active')
+							error += 1;
+						} else {
+							value = value + 1
+						}
+						if (value == $('.create-game__subjects-body p').length) [
+							$('.create-game__subjects-warning').removeClass('active')
+						]
+					}
+					// удаление пустых значений
+					arr = arr.filter((element, index) => {
+						if (+element != 0) {
+							return element
+						}
+					})
+					// проверка на повтор элементов
+					let a = 0
+					for (let i = 0; i < arr.length; i++) {
+						for (let b = 0; b < arr.length; b++) {
+							if (arr[i] == arr[b] && i != b) {
+								a += 1
+								$('.create-game__subjects-warning2').addClass('active')
+								error += 1;
+							}
+							if (a <= 0) {
+								$('.create-game__subjects-warning2').removeClass('active')
+							}
+						}
+					}
+					// деактивация таблицы комбинаций при наличии ошибок
+					let b = 0
+					for (let i = 0; i < $('.error').length; i++) {
+						if ($('.error')[i].className.includes('active')) {
+							b += 1
+							$('.create-game__comb').css('pointer-events', 'none')
+							$('.create-game__comb').css('opacity', 0.2)
+							submitErrorSubject += 1
+						}
+						if (b <= 0) {
+							$('.create-game__comb').css('pointer-events', 'auto')
+							$('.create-game__comb').css('opacity', 1)
+							submitErrorSubject = 0
+						}
+					}
+					checkSubmitError()
+					return error;
+
+				}
+				function checkSubmitError() {
+					console.log(submitErrorSubject)
+					console.log(submitErrorSelect)
+					submitError = submitErrorSubject + submitErrorSelect;
+					if (submitError == 0) {
+						$('.submit').prop('disabled', false)
+						$('.submit').css('pointer-events', 'auto')
+						$('.submit').css('opacity', 1)
+					} else {
+						$('.submit').prop('disabled', true)
+						$('.submit').css('pointer-events', 'none')
+						$('.submit').css('opacity', 0.2)
+					}
+				}
+				// функция которая при отправке проверяет не бьёт ли элемент сам себя
+				function checkDisabled() {
+					let error = 0
+					for (let i = 0; i < $('.create-game__comb tbody tr').length; i++) {
+						let elemText = $('.create-game__comb tbody tr').eq(i).find('.t-subject').text()
+						$('.create-game__comb tbody tr').eq(i).find(`option:selected[value="${elemText}"]`).length ? error += 1 : error = error
+					}
+					return error
+				}
+				// действия при клике на кнопку отправить
+				$("body").on("click", ".submit", function () {
+					// счётчик ошибок
+					let warning = 0
+					// проверка на количество и заполненость предметов
+					if (checkFullness() > 0) {
+						warning += 1
+					}
+					// проверка не бьёт ли предмет сам себя
+					if (checkDisabled() > 0) {
+						warning += 1
+					}
+					// проверка нет ли одинаовых выбранных предметов в select
+					if (checkSelected(0) > 0) {
+						warning += 1
+					}
+					if (warning === 0) {
+						$('.create-game').addClass('opacity')
+						$('.sides').css('z-index', 99)
+						setTimeout(function () {
+							$('.create-game').css('display', 'none')
+							$('._container').removeClass('opacity')
+						}, 500)
+						let game = {}
+						for (let i = 0; i < $('.create-game__comb tbody tr').length; i++) {
+							let subjectComb = []
+							let subjectImg = [$('.create-game__comb tbody tr').eq(i).find('.t-img input').val()]
+							let subjectName = $('.create-game__comb tbody tr').eq(i).find('.t-subject').text()
+							game[subjectName] = [subjectComb, subjectImg]
+							for (let b = 0; b < $('.create-game__comb tbody tr').eq(i).find('select').length; b++) {
+								subjectComb.push($('.create-game__comb tbody tr').eq(i).find('select').eq(b).children('option:selected').val())
+							}
+						}
+						console.log(game)
+						createGame(game)
+					} else {
+						alert('Проверьте форму на ошибки')
+					}
+				})
+			} else {
+				showGame()
+			}
+		})
+	}
+})
+// объеты данных для игры 
+let gameClassic = {
+	'Камень': [['Ножницы'], ['http://127.0.0.1:5501/img/rock.png']],
+	'Ножницы': [['Бумага'], ['http://127.0.0.1:5501/img/scissors.png']],
+	'Бумага': [['Камень'], ['http://127.0.0.1:5501/img/paper.png']]
+}
+let gameSpok = {
+	'Камень': [['Ножницы', 'Ящерица'], ['http://127.0.0.1:5501/img/rock.png']],
+	'Ножницы': [['Бумага', 'Ящерица'], ['http://127.0.0.1:5501/img/scissors.png']],
+	'Бумага': [['Камень', 'Спок'], ['http://127.0.0.1:5501/img/paper.png']],
+	'Ящерица': [['Бумага', 'Спок'], ['http://127.0.0.1:5501/img/lizard.png']],
+	'Спок': [['Камень', 'Ножницы'], ['http://127.0.0.1:5501/img/spok.png']]
+}
+function createGame(gameName) {
+	// создание элементов из объекта 
+	let combKeys = Object.keys(gameName)
+	let combValue = Object.values(gameName)
+	for (let i = 0; i < combKeys.length; i++) {
+		let yourSideImg = document.createElement('img');
+		yourSideImg.src = gameName[combKeys[i]][1]
+		yourSideImg.alt = combKeys[i]
+		document.querySelector('.your-side__img').appendChild(yourSideImg);
+	}
+	// случайная генерация предмета 
+	function generateEnemySign() {
+		let enemyClickSign = Math.round(-0.5 + Math.random() * combKeys.length);
+		document.querySelector('.enemy-side__selected-sign img').src = gameName[combKeys[enemyClickSign]][1]
+		document.querySelector('.enemy-side__selected-sign img').alt = combKeys[enemyClickSign]
+	}
+	// анимация появления и исчезновения предметов
+	$('.your-side__img img').click(function () {
+		let yourClickSign = this
+		$('.your-side__img').addClass('opacity')
+		$('.your-side__img').css('transform', 'scale(0)')
+		setTimeout(function () {
+			generateEnemySign()
+			$('.your-side__img').css('display', 'none')
+			$('.selected-sign').css('display', 'block')
+			document.querySelector('.your-side__selected-sign img').src = yourClickSign.src
+			document.querySelector('.your-side__selected-sign img').alt = yourClickSign.alt
+			$('.selected-sign').css('transform', 'scale(1)')
+			$('.selected-sign').removeClass('opacity')
+			let enemySign = document.querySelector('.enemy-side__selected-sign img').alt
+			let yourSign = document.querySelector('.your-side__selected-sign img').alt
+			// определение победителя 
+			if (enemySign != yourSign) {
+				for (let i = 0; i < combKeys.length; i++) {
+					for (let b = 0; b < combValue[i].length; b++) {
+						if (enemySign == combKeys[i] && combValue[i][b].includes(yourSign)) {
+							document.querySelector('.score__enemy').innerHTML = +document.querySelector('.score__enemy').innerHTML + 1
+						} else if (yourSign == combKeys[i] && combValue[i][b].includes(enemySign)) {
+							document.querySelector('.score__your').innerHTML = +document.querySelector('.score__your').innerHTML + 1
+							break
+						}
+					}
+				}
+			}
+			setTimeout(function () {
+				$('.selected-sign').addClass('opacity')
+				$('.selected-sign').css('transform', 'scale(0)')
+				setTimeout(function () {
+					$('.selected-sign').css('display', 'none')
+					$('.your-side__img').css('display', 'block')
+					$('.your-side__img').css('transform', 'scale(1)')
+					$('.your-side__img').removeClass('opacity')
+				}, 500)
+			}, 1500)
+		}, 500)
+	})
+}
+
+	</script>
+
+</body>
+
+</html>
